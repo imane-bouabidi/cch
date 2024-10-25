@@ -1,19 +1,23 @@
 package models.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import models.entities.embeddables.RoundResultId;
 
 import java.time.LocalDate;
 import java.util.List;
 //Round
+
+@Entity
+@Table(name = "round")
 public class Season {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private RoundResultId id;
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Competition competitions;
+    @ManyToOne
+    private Competition competition;
     @OneToMany(mappedBy = "season", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Result> results;
 
@@ -49,11 +53,19 @@ public class Season {
         this.endDate = endDate;
     }
 
-    public Competition getCompetitions() {
-        return competitions;
+    public Competition getCompetition() {
+        return competition;
     }
 
-    public void setCompetitions(Competition competitions) {
-        this.competitions = competitions;
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 }

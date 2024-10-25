@@ -1,12 +1,18 @@
 package models.entities;
 
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import models.entities.embeddables.RoundResultId;
 
 import java.util.List;
 
+@Entity
+@Table(name = "result")
 public class Result {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private RoundResultId id;
+    @ManyToOne
     private Rider rider;
     @ManyToOne
     private Season season;

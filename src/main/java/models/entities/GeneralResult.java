@@ -1,14 +1,13 @@
 package models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapKey;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import models.entities.embeddables.GeneralResultId;
 
 import java.time.Duration;
 
+@Entity
+@Table(name = "General-results")
 public class GeneralResult {
 
     @EmbeddedId

@@ -12,7 +12,7 @@ public class AppConfig {
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {
         LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-        factoryBean.setPersistenceUnitName("PU_Name");
+        factoryBean.setPersistenceUnitName("CCH");
         return factoryBean;
     }
 
